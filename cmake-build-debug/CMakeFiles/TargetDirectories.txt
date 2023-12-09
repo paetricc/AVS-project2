@@ -1,0 +1,3 @@
+/home/paetrik/Documents/MIT/AVS/projects/AVS-project2/cmake-build-debug/CMakeFiles/PMC.dir
+/home/paetrik/Documents/MIT/AVS/projects/AVS-project2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/paetrik/Documents/MIT/AVS/projects/AVS-project2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
