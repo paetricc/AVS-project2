@@ -1,0 +1,3 @@
+/home/xbartu11/projects/AVS-project2/build_evaluate/CMakeFiles/PMC.dir
+/home/xbartu11/projects/AVS-project2/build_evaluate/CMakeFiles/edit_cache.dir
+/home/xbartu11/projects/AVS-project2/build_evaluate/CMakeFiles/rebuild_cache.dir

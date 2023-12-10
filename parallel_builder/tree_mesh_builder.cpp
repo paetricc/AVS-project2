@@ -14,9 +14,6 @@
 
 #include "tree_mesh_builder.h"
 
-#define SQRT3 1.73205
-#define MIN_GRID 1
-
 TreeMeshBuilder::TreeMeshBuilder(unsigned gridEdgeSize)
     : BaseMeshBuilder(gridEdgeSize, "Octree")
 {
@@ -52,7 +49,7 @@ void TreeMeshBuilder::computeNewPosition(const Vec3_t<float> &currentPosition, V
     newPosition.z = currentPosition.z + gridSize * sc_vertexNormPos[i].z;
 }
 
-bool TreeMeshBuilder::isBlockEmpty(const Vec3_t<float> currentPosition, const ParametricScalarField& field, float gridSize, float GridResolution)
+bool TreeMeshBuilder::isBlockEmpty(const Vec3_t<float> currentPosition, const ParametricScalarField& field, const float gridSize, const float GridResolution)
 {
     Vec3_t<float> newPosition;
     computeCenterPosition(currentPosition, newPosition, gridSize);
@@ -76,7 +73,7 @@ unsigned TreeMeshBuilder::octree(const Vec3_t<float> &currentPosition, float gri
 
     for (int i = 0; i < 8; i++)
     {
-        #pragma omp task default(none) firstprivate(i) shared(currentPosition, halfOfGridSize, triangles, field)
+        #pragma omp task default(none) firstprivate(i, currentPosition, halfOfGridSize) shared(triangles, field)
         {
             Vec3_t<float> newPosition;
             computeNewPosition(currentPosition, newPosition, halfOfGridSize, i);

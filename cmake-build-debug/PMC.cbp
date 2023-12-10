@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PMC"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PMC">
+				<Option output="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/PMC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common"/>
+					<Add directory="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 PMC"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PMC/fast">
+				<Option output="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/PMC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common"/>
+					<Add directory="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 PMC/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/base_mesh_builder.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/base_mesh_builder.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/cxxopts.hpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/parametric_scalar_field.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/parametric_scalar_field.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/ref_mesh_builder.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/ref_mesh_builder.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/common/vector_helpers.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/main.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder/loop_mesh_builder.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder/loop_mesh_builder.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder/tree_mesh_builder.cpp">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/parallel_builder/tree_mesh_builder.h">
+			<Option target="PMC"/>
+		</Unit>
+		<Unit filename="/home/paetrik/Documents/MIT/AVS/projects/barbora/projects/AVS-project2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

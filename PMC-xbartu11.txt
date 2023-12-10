@@ -1,0 +1,83 @@
+Architektury Výpočetních Systémů (AVS 2023)
+Projekt č. 2 (PMC)
+Login: xbartu11
+
+Úloha 1: Paralelizace původního řešení
+===============================================================================
+
+1) Kterou ze smyček (viz zadání) je vhodnější paralelizovat a co způsobuje 
+   neefektivitu paralelizaci té druhé?
+
+   Vhodnější je paralelizovat vnější smyčku, respektive smyčku z funkce
+   marchCubes, jež prochází všechny koordináty 3D prostoru.
+   Neefektivitu druhé smyčku způsobuje to, že v případě paralelizace této
+   smyčky by byla paralelizován pouze malý úsek kódu, a tak by byla režie
+   této paralelizace větší než samotná efektivita této paralelizace.
+
+2) Jaké plánování (rozdělení práce mezi vlákna) jste zvolili a proč? 
+   Jaký vliv má velikost "chunk" při dynamickém plánování (8, 16, 32, 64)?
+
+   Zvolil jsem plánování guided neboť oproti plánování dynamic nebo static
+   dosahovalo lehce lepších rychlostních výsledků a to i v závislosti na
+   různých nastaveních parametru chunk_size pro všechna zmíněná plánování.
+
+   Při dynamickém plánování má velikost "chunk" takový vliv, že čím je
+   chunk_size větší, tím je menší synchronizační režie ale zato je hrubší
+   vyvážení záteže. V mém případě zvyšující se velikost chunk_size při
+   dynamickém plánování neměla na rychlost výpočtu prakticky žádný vliv
+   (při některých bězích programu bylo skoro nepostřehnutelné, že při velikosti
+   chunk_size=16 je výpočet lehce rychlejší).
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+
+   Ukládání trojúhelníků z několika vláken současně je zajištěno pomocí
+   #pragma omp critical, která zajišťuje to, že do vektoru mTriangles v daném
+   okamžiku bude ukládat trojúhelník pouze jedno vlákno. Pořadí ukládání avšak
+   není zaručeno.
+
+Úloha 2: Paralelní průchod stromem
+===============================================================================
+
+1) Stručně popište použití OpenMP tasků ve vašem řešení.
+
+2) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový 
+   task pro každou krychli na nejnižší úrovni?
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+
+   Ukládání trojúhelníků z několika vláken současně je zajištěno stejně jako při
+   paralelizaci původního řešení a to pomocí #pragma omp critical, která
+   zajišťuje to, že do vektoru mTriangles v daném okamžiku bude ukládat
+   trojúhelník pouze jedno vlákno. Pořadí ukládání avšak není zaručeno.
+
+Úloha 3: Grafy škálování všech řešení
+===============================================================================
+
+1) Stručně zhodnoťte efektivitu vytvořených řešení (na základě grafů ŠKÁLOVÁNÍ).
+
+2) V jakém případě (v závislosti na počtu bodů ve vstupním souboru a velikosti 
+   mřížky) bude vaše řešení 1. úlohy neefektivní? (pokud takový případ existuje)
+
+3) Je (nebo není) stromový algoritmus efektivnější z pohledu slabého škálování 
+   vzhledem ke vstupu?
+
+4) Jaký je rozdíl mezi silným a slabým škálováním?
+
+Úloha 4: Analýza využití jader pomocí VTune
+================================================================================
+
+1) Jaké bylo průměrné využití jader pro všechny tři implementace s omezením na 
+   18 vláken? Na kolik procent byly využity?
+   
+   ref: 2.8% (0.997 out of 36 logical CPUs)
+   loop:
+   tree:
+
+2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
+   všech jader? Na kolik procent se podařilo využít obě CPU?
+   
+   ref:
+   loop:
+   tree:
+
+3) Jaké jsou závěry z těchto měření?
