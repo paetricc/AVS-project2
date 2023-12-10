@@ -1,12 +1,18 @@
 Architektury Výpočetních Systémů (AVS 2023)
 Projekt č. 2 (PMC)
-Login: xlogin00
+Login: xbartu11
 
 Úloha 1: Paralelizace původního řešení
 ===============================================================================
 
 1) Kterou ze smyček (viz zadání) je vhodnější paralelizovat a co způsobuje 
    neefektivitu paralelizaci té druhé?
+
+   Vhodnější je paralelizovat vnější smyčku, respektive smyčku z funkce
+   marchCubes procházející přes všechny koordináty 3D prostoru.
+   Neefektivitu druhé smyčku způsobuje to, že v případě paralelizace této
+   smyčky by byla paralelizována pouze malý úsek kódu, a tak by byla režie
+   této paralelizace větší než samotná efektivita této paralelizace
 
 2) Jaké plánování (rozdělení práce mezi vlákna) jste zvolili a proč? 
    Jaký vliv má velikost "chunk" při dynamickém plánování (8, 16, 32, 64)?
