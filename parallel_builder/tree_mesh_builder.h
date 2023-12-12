@@ -5,7 +5,7 @@
  *
  * @brief   Parallel Marching Cubes implementation using OpenMP tasks + octree early elimination
  *
- * @date    09-12-2023
+ * @date    12-12-2023
  **/
 
 #ifndef TREE_MESH_BUILDER_H
@@ -14,7 +14,7 @@
 #include "base_mesh_builder.h"
 
 #define SQRT3 1.73205
-#define MIN_GRID 1
+#define CUT_OFF 3
 
 class TreeMeshBuilder : public BaseMeshBuilder
 {
@@ -26,8 +26,6 @@ protected:
     float evaluateFieldAt(const Vec3_t<float> &pos, const ParametricScalarField &field);
     void emitTriangle(const Triangle_t &triangle);
     const Triangle_t *getTrianglesArray() const { return mTriangles.data(); }
-
-private:
     bool isBlockEmpty(const Vec3_t<float> currentPosition, const ParametricScalarField &field, float gridSize, float GridResolution);
     void computeCenterPosition(const Vec3_t<float> &currentPosition, Vec3_t<float> &centerPosition, const float gridSize);
     static void computeNewPosition(const Vec3_t<float> &currentPosition, Vec3_t<float> &newPosition, const float gridSize, const int i);

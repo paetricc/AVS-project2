@@ -39,9 +39,37 @@ Login: xbartu11
 ===============================================================================
 
 1) Stručně popište použití OpenMP tasků ve vašem řešení.
+   
+   Ve funkci marchCubes je vytvořena paralelní oblast. Následně pomocí 
+   #pragma omp single určím, aby právě jedno vlákno "nastartovalo" rekurzi 
+   funkce octree() (respektive vytvořilo kořen rekuzivního stromu). Následně je  
+   ve funkci octree() prováděna hierarchciká dekompozice prostoru na 8 potomků, 
+   respektive je aktuální blok rozdělen do 8bloků o poloviční délce hrany 
+   původní krychle. Pro výpočet každého takového bloku je vytvořen "task", ve
+   kterém je následně opět volána funkce octree() nad vytvořeným blokem. 
+   V případě, že v daném bloku neprochází hledaný povrch (ověříme podmínkou, ze 
+   zadaní - funkce isBlockEmpty()), tak je zastavena rekurze aktuálního bloku 
+   a je vrácena hodnota 0. Rekurze bloku je rovněž zastavena, pokud je délka
+   hrany aktuálního bloku rovna 3 a to tak, že je nad tímto blokem použita
+   sekvenční verze vyhodnocování respektive "loop" řešení, přičemž se zde již
+   nevytváří nové "tasky". Pomocí #pragma omp taskwait je zajištěno, že je výsledný
+   počet trojúhelníků v daném bloku vrácen pouze v případě, že jsou dokončeny
+   všechny "tasky" (respektive všech 8 podbloků daného bloku). Respektive na
+   vizualizaci je výsledek z bloku(tasku) 0 vrácen až v případě, že
+   jsou vráceny všechny výsledky bloků(tasků) 1 až 8, přičemž každý z těchto 
+   bloků(tasků) opět čeká na to až bude mít k dispozici všechny výsledky 
+   z jeho potomků atd...
 
-2) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový 
+   Vizualizace:      [            0            ]
+                     /   /   /   / \   \   \   \
+                    /   /   /   /   \   \   \   \
+                   [1] [2] [3] [4] [5] [6] [7] [8]
+                    :   :   :   :   :   :   :   :
+
+2) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový
    task pro každou krychli na nejnižší úrovni?
+
+   Vliv tohoto
 
 3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
 
@@ -69,15 +97,21 @@ Login: xbartu11
 1) Jaké bylo průměrné využití jader pro všechny tři implementace s omezením na 
    18 vláken? Na kolik procent byly využity?
    
-   ref: 2.8% (0.997 out of 36 logical CPUs)
-   loop:
-   tree:
+   ref:  Průměrné využití jader je  0.997 a byla využita na  2.8%. [Effective CPU Utilization:  2.8% ( 0.997 out of 36 logical CPUs)]
+   loop: Průměrné využití jader je 17.502 a byla využita na 48.6%. [Effective CPU Utilization: 48.6% (17.502 out of 36 logical CPUs)]
+   tree: Průměrné využití jader je 15.489 a byla využita na 43.0%. [Effective CPU Utilitazion: 43.0% (15.489 out of 36 logical CPUs)]
 
 2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
    všech jader? Na kolik procent se podařilo využít obě CPU?
    
-   ref:
-   loop:
-   tree:
+   ref:  Průměrné využití jader je  0.998 a byla využita na  2.8%. [Effective CPU Utilization:  2.8% ( 0.998 out of 36 logical CPUs)]
+   loop: Průměrné využití jader je 32.561 a byla využita na 90.4%. [Effective CPU Utilization: 90.4% (32.561 out of 36 logical CPUs)]
+   tree: Průměrné využití jader je 25.840 a byla využita na 71.8%. [Effective CPU Utilization: 71.8% (25.840 out of 36 logical CPUs)]
 
 3) Jaké jsou závěry z těchto měření?
+
+   Referenční řešení využívá v průměru pouze jedno jádro neboť nepoužívá 
+   paralelizaci a tudíž je průměrné využití jader pro obě omezení vláken shodná. 
+   Řešení pomocí "loop" a "tree" již využívá paralelizaci a tudíž jsou již 
+   využita další jádra, přičemž řešení pomocí "loop" má lepší využití jader než 
+   řešení pomocí "tree".

@@ -5,7 +5,7 @@
  *
  * @brief   Parallel Marching Cubes implementation using OpenMP tasks + octree early elimination
  *
- * @date    09-12-2023
+ * @date    12-12-2023
  **/
 
 #include <iostream>
@@ -26,7 +26,7 @@ unsigned TreeMeshBuilder::marchCubes(const ParametricScalarField &field)
 
     #pragma omp parallel default(none) shared(field, totalTriangles)
     {
-        #pragma omp single nowait
+        #pragma omp single
         {
             totalTriangles = octree(Vec3_t<float>{0.0f, 0.0f, 0.0f}, (float) mGridSize, field);
         }
@@ -58,7 +58,27 @@ bool TreeMeshBuilder::isBlockEmpty(const Vec3_t<float> currentPosition, const Pa
 
 unsigned TreeMeshBuilder::octree(const Vec3_t<float> &currentPosition, float gridSize,  const ParametricScalarField &field)
 {
-    unsigned triangles = 0;
+
+    if(gridSize == CUT_OFF)
+    {
+        unsigned totalTriangles = 0;
+        unsigned currentGridSize = gridSize;
+        unsigned cubesCount = gridSize * gridSize * gridSize;
+
+        for (size_t i = 0; i < cubesCount; i++)
+        {
+            Vec3_t<float> newPosition(currentPosition.x + i % currentGridSize,
+                                      currentPosition.y + (i / currentGridSize) % currentGridSize ,
+                                      currentPosition.z + i / (currentGridSize * currentGridSize));
+
+            totalTriangles += buildCube(newPosition, field);
+        }
+
+        return totalTriangles;
+
+//        return buildCube(currentPosition, field);
+    }
+
     float halfOfGridSize = gridSize * 0.5f;
 
     if(isBlockEmpty(currentPosition, field, halfOfGridSize, (float)gridSize * mGridResolution))
@@ -66,11 +86,7 @@ unsigned TreeMeshBuilder::octree(const Vec3_t<float> &currentPosition, float gri
         return 0;
     }
 
-    if(gridSize <= MIN_GRID)
-    {
-        return buildCube(currentPosition, field);
-    }
-
+    unsigned triangles = 0;
     for (int i = 0; i < 8; i++)
     {
         #pragma omp task default(none) firstprivate(i, currentPosition, halfOfGridSize) shared(triangles, field)
