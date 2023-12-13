@@ -96,7 +96,19 @@ Login: xbartu11
 3) Je (nebo není) stromový algoritmus efektivnější z pohledu slabého škálování 
    vzhledem ke vstupu?
 
+   Pro menší vstupy není stromový algoritmus z hlediska slabého škálování 
+   efektivní.
+
 4) Jaký je rozdíl mezi silným a slabým škálováním?
+
+   Silné škálování se zaměřuje na to, jak se zkracuje doba výpočtu úlohy, když 
+   dochází ke zvyšování počtu procesorů, přičemž velikost počítané úlohy zůstává 
+   stejná. V ideálním případě by zdvojnásobení počtu procesorů mělo mít za 
+   následek dvojinásobné zrychlení výpočtu úlohy.
+
+   Zatímco při slabém škálování se chtějí řešit větší problémy na větším stroji 
+   za stejý čas. V ideálním případě by dvojnásobek procesorů by měl umožňovat 
+   zpracovávat dvojnásobné ůlohy za stejnou dobu výpočtu.
 
 Úloha 4: Analýza využití jader pomocí VTune
 ================================================================================
@@ -106,14 +118,14 @@ Login: xbartu11
    
    ref:  Průměrné využití bylo  0.997 při omezení na 18 vláken a jádra byla využita na  2.8%. [Effective CPU Utilization:  2.8% ( 0.997 out of 36 logical CPUs)]
    loop: Průměrné využití bylo 17.496 při omezení na 18 vláken a jádra byla využita na 48.6%. [Effective CPU Utilization: 48.6% (17.496 out of 36 logical CPUs)]
-   tree: Průměrné využití bylo 16.366 při omezení na 18 vláken a jádra byla využita na 45.5%. [Effective CPU Utilitazion: 45.5% (16.366 out of 36 logical CPUs)]
+   tree: Průměrné využití bylo 16.439 při omezení na 18 vláken a jádra byla využita na 45.7%. [Effective CPU Utilitazion: 45.7% (16.439 out of 36 logical CPUs)]
 
 2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
    všech jader? Na kolik procent se podařilo využít obě CPU?
    
    ref:  Průměrné využití bylo  0.997 při omezení na 36 vláken a jádra byla využita na  2.8%. [Effective CPU Utilization:  2.8% ( 0.997 out of 36 logical CPUs)]
-   loop: Průměrné využití bylo 33.321 při omezení na 36 vláken a jádra byla využita na 92.6%. [Effective CPU Utilization: 92.6% (33.321 out of 36 logical CPUs)]
-   tree: Průměrné využití bylo 28.067 při omezení na 36 vláken a jádra byla využita na 78.0%. [Effective CPU Utilization: 78.0% (28.067 out of 36 logical CPUs)]
+   loop: Průměrné využití bylo 32.524 při omezení na 36 vláken a jádra byla využita na 90.3%. [Effective CPU Utilization: 90.3% (32.524 out of 36 logical CPUs)]
+   tree: Průměrné využití bylo 28.020 při omezení na 36 vláken a jádra byla využita na 77.8%. [Effective CPU Utilization: 77.8% (28.020 out of 36 logical CPUs)]
 
 3) Jaké jsou závěry z těchto měření?
 
