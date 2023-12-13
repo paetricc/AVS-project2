@@ -75,8 +75,6 @@ unsigned TreeMeshBuilder::octree(const Vec3_t<float> &currentPosition, float gri
         }
 
         return totalTriangles;
-
-//        return buildCube(currentPosition, field);
     }
 
     float halfOfGridSize = gridSize * 0.5f;
