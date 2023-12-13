@@ -14,7 +14,7 @@
 #include "base_mesh_builder.h"
 
 #define SQRT3 1.73205
-#define CUT_OFF 3
+#define CUT_OFF 2.0
 
 class TreeMeshBuilder : public BaseMeshBuilder
 {
